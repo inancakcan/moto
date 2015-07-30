@@ -1,0 +1,141 @@
+﻿@model IEnumerable<moto.Models.Ilan>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IlanBasligi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AnasayfadaGoster)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Published)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deleted)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UpdatedOn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IlanSahibi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Fiyati)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lon)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IlanResimleri)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Video)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostaKodu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IlanTarihi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoruntulenmeSayisi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AltKategoriId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IlanBasligi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShortDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullDescription)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AnasayfadaGoster)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Published)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deleted)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UpdatedOn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IlanSahibi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyati)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lon)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IlanResimleri)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Video)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostaKodu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IlanTarihi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GoruntulenmeSayisi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AltKategoriId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.IlanId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.IlanId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.IlanId })
+        </td>
+    </tr>
+}
+
+</table>

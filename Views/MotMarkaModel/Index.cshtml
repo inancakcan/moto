@@ -1,0 +1,63 @@
+﻿@model moto.Models.MotMarkaModelViewModel
+@{
+    ViewBag.Title = "Index";
+}
+@{ Layout = null;}
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $("#MotMarkaId").change(function () {
+            var selectedItem = $(this).val();
+            var ddlModeller = $("#MotModelId");
+            var statesProgress = $("#modeller-loading-progress");
+            statesProgress.show();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.RouteUrl("GetMotModelsByMarkaId"))",
+                data: { "MotMarkaId": selectedItem },
+                success: function (data) {
+                    ddlModeller.html('');
+                    ddlModeller.append($('<option></option>').val('0').html('Model seçiniz...'));
+                    $.each(data, function (id, option) {
+                    ddlModeller.append($('<option></option>').val(option.id).html(option.name));
+                    });
+                    statesProgress.hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Motosiklet modelleri getirilirken sorun oluştu.');
+                    statesProgress.hide();
+                }
+            });
+        });
+
+
+        $("#MotModelId").change(function () {
+            var selectedItem = $(this).val();
+            //alert(selectedItem);
+        });
+
+
+    });
+</script>
+
+    <table >
+        <tr>
+            <td>
+                    @Html.LabelFor(model => model.MotMarkaId)
+                    @Html.DropDownListFor(model => model.MotMarkaId, Model.AvailableMotMarkas)
+            </td>
+            <td>
+                    @Html.LabelFor(model => model.MotModelId)
+                    @Html.DropDownListFor(model => model.MotModelId, Model.AvailableMotModels)
+                    <span id="modeller-loading-progress" style="display: none;">modeller yükleniyor..</span>
+            </td>
+        
+        </tr>
+    </table>

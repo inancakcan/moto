@@ -1,0 +1,61 @@
+﻿@model moto.Models.KategoriAltKategoriViewModel
+
+@{ Layout = null;}
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+
+        $("#KategoriId").change(function () {
+            var selectedItem = $(this).val();
+            var ddlAltKategoriler = $("#AltKategoriId");
+            var statesProgress = $("#altkategoriler-loading-progress");
+            statesProgress.show();
+            $.ajax({
+                cache: false,
+                type: "GET",
+                url: "@(Url.RouteUrl("GetAltKategorisByKategoriId"))",
+                data: { "KategoriId": selectedItem },
+                success: function (data) {
+                    ddlAltKategoriler.html('');
+                    ddlAltKategoriler.append($('<option></option>').val('0').html('Alt kategoriyi seçiniz...'));
+                    $.each(data, function (id, option) {
+                    ddlAltKategoriler.append($('<option></option>').val(option.id).html(option.name));
+                    });
+                    statesProgress.hide();
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert('Alt kategoriler getirilirken sorun oluştu.');
+                    statesProgress.hide();
+                }
+            });
+        });
+
+
+        $("#AltKategoriId").change(function () {
+            var selectedItem = $(this).val();
+            //alert(selectedItem);
+        });
+
+
+    });
+</script>
+
+<table>
+    <tr>
+        <td>
+            @Html.LabelFor(model => model.KategoriId)
+            @Html.DropDownListFor(model => model.KategoriId, Model.AvailableKategoris)
+        </td>
+        <td>
+            @Html.LabelFor(model => model.AltKategoriId)
+            @Html.DropDownListFor(model => model.AltKategoriId, Model.AvailableAltKategoris)
+            <span id="altkategoriler-loading-progress" style="display: none;">Alt kategoriler yükleniyor..</span>
+        </td>
+
+    </tr>
+</table>

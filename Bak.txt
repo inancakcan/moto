@@ -1,0 +1,67 @@
+﻿YavuzSultanSelim Cad:36.590587, 36.163656
+
+
+ -----------------WINDOW-----------------
+ 
+ @*@(Html.Kendo().Window()
+                    .Name("window")
+                    .Title("Deneme")
+                    .Content("yükleniyor")
+                    .LoadContentFrom("GoogleMap", "Partial", new { Lat = "36.363636", Lon = "36.363636" })
+                    //.LoadContentFrom("GoogleMap", "Ilan")
+                    .Iframe(true)
+                    .Draggable()
+                    .Resizable()
+                    .Height(600)
+                    .Width(600)
+                    .Modal(true)
+                    .Visible(true)
+                    .Actions(actions => actions.Pin().Minimize().Maximize().Close())
+                            )
+
+                    <span id="GoogleMap" class="k-button">Harita üzerinde görmek için tıklayınız</span>
+                    <script>
+                    $(document).ready(function () {
+                        $("#GoogleMap").bind("click", function () {
+                            $("#window").data("kendoWindow").open();
+                        });
+                    });
+
+                    </script>*@
+
+-----------------WINDOW-------------
+
+****view*****
+---Ajax ile PartialView YuklemeOn Demand----------------------
+ <a href='javascript:getView();'>Get Partial View</a>
+ <script type="text/javascript">
+     function getView() {
+         $('#divResult').load("@Url.Action("GetView" , "Home" )");
+     }
+ </script>
+ <div id='divResult'>
+ </div>
+ ****view*****
+ ****controller*****
+ public ActionResult GetView()
+ {
+    return PartialView("MyPartialView");
+ }
+ ****controller*****
+
+
+---Ajax ile PartialView YuklemeOn Demand----------------------
+
+
+
+
+-------------TOOLTIP-------------------
+  <input id="btnYardim" type="button" value="?" title="qwdafda" />
+                    @(Html.Kendo().Tooltip()
+                    .For("#btnYardim")
+                   .Position(TooltipPosition.Top)
+                   .Width(300)
+                   .ShowOn(TooltipShowOnEvent.Click)
+                   .Content("Help Text"))
+
+-------------TOOLTIP-------------------

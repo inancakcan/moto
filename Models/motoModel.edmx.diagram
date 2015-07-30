@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fff2dd4a6f7041eeb636658e012a1e6c" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="motobulvarModel.il" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="motobulvarModel.ilce" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="motobulvarModel.mahalle" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="motobulvarModel.semt" Width="1.5" PointX="5.25" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="motobulvarModel.FK_ilce_il_ilID" ManuallyRouted="false" />
+        <AssociationConnector Association="motobulvarModel.FK_semt_ilce_ilceID" ManuallyRouted="false" />
+        <AssociationConnector Association="motobulvarModel.FK_mahalle_semt_semtID" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Durumu" Width="1.5" PointX="0.75" PointY="39.25" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Guvenlik" Width="1.5" PointX="3" PointY="8.5" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Kimden" Width="1.5" PointX="0.75" PointY="17.125" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Marka" Width="1.5" PointX="0.75" PointY="22.625" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Model" Width="1.5" PointX="0.75" PointY="19.375" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_MotorGucu" Width="1.5" PointX="0.75" PointY="36.875" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_MotorHacmi" Width="1.5" PointX="0.75" PointY="29.875" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Renk" Width="1.5" PointX="0.75" PointY="34.5" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_SilindirSayisi" Width="1.5" PointX="0.75" PointY="25.125" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Tipi" Width="1.5" PointX="0.75" PointY="32.25" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Vites" Width="1.5" PointX="0.75" PointY="27.5" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Model_mot_Marka_Id" />
+        <EntityTypeShape EntityType="motobulvarModel.postakodu" Width="1.5" PointX="10.125" PointY="1.125" />
+        <AssociationConnector Association="motobulvarModel.FK_postakodu_mahalle_mahalleID" />
+        <EntityTypeShape EntityType="motobulvarModel.AltKategori" Width="1.5" PointX="7.625" PointY="5.625" />
+        <EntityTypeShape EntityType="motobulvarModel.Kategori" Width="1.5" PointX="5.375" PointY="5.75" />
+        <AssociationConnector Association="motobulvarModel.FK_AltKategori_Kategori_KategoriId" />
+        <EntityTypeShape EntityType="motobulvarModel.mot_Motor" Width="1.5" PointX="3" PointY="24.375" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Durumu_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Guvenlik_mot_Motor_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Kimden_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Model_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_MotorGucu_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_MotorHacmi_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Renk_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_SilindirSayisi_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Tipi_Id" />
+        <AssociationConnector Association="motobulvarModel.FK_mot_Motor_mot_Vites_Id" />
+        <EntityTypeShape EntityType="motobulvarModel.FavorilereAlinanIlanlar" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="motobulvarModel.Ilan" Width="1.5" PointX="5.375" PointY="8.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

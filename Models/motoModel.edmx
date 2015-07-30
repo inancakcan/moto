@@ -1,0 +1,1316 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="motobulvarModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AltKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriId" Type="int" Nullable="false" />
+          <Property Name="AltKategoriAdi" Type="nvarchar" MaxLength="150" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FavorilereAlinanIlanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserUN" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IlanId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilan">
+          <Key>
+            <PropertyRef Name="IlanId" />
+          </Key>
+          <Property Name="IlanId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IlanBasligi" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ShortDescription" Type="nvarchar(max)" />
+          <Property Name="FullDescription" Type="nvarchar(max)" />
+          <Property Name="AnasayfadaGoster" Type="bit" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Deleted" Type="bit" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedOn" Type="datetime" Nullable="false" />
+          <Property Name="IlanSahibi" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Fiyati" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Lat" Type="nvarchar" MaxLength="10" />
+          <Property Name="Lon" Type="nvarchar" MaxLength="10" />
+          <Property Name="IlanResimleri" Type="varchar" MaxLength="500" />
+          <Property Name="Video" Type="varchar" MaxLength="500" />
+          <Property Name="PostaKodu" Type="varchar" MaxLength="5" />
+          <Property Name="IlanTarihi" Type="datetime" Nullable="false" />
+          <Property Name="GoruntulenmeSayisi" Type="int" Nullable="false" />
+          <Property Name="AltKategoriId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="il">
+          <Key>
+            <PropertyRef Name="ilID" />
+          </Key>
+          <Property Name="ilID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="70" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilceID" />
+          </Key>
+          <Property Name="ilceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilID" Type="int" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KategoriAdi" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mahalle">
+          <Key>
+            <PropertyRef Name="mahalleID" />
+          </Key>
+          <Property Name="mahalleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="semtID" Type="int" Nullable="false" />
+          <Property Name="ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Durumu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Durumu" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Guvenlik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mot_MoturId" Type="int" Nullable="false" />
+          <Property Name="ABSCBS" Type="bit" Nullable="false" />
+          <Property Name="Airbag" Type="bit" Nullable="false" />
+          <Property Name="Alarm" Type="bit" Nullable="false" />
+          <Property Name="Sirtlik" Type="bit" Nullable="false" />
+          <Property Name="YanKorumaCubuklari" Type="bit" Nullable="false" />
+          <Property Name="OnKorumaCubukları" Type="bit" Nullable="false" />
+          <Property Name="DusmeTopuzlari" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Kimden">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Kimden" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Marka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Marka" Type="nvarchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Model">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MarkaId" Type="int" Nullable="false" />
+          <Property Name="Model" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Motor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Model" Type="int" Nullable="false" />
+          <Property Name="Bedel" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Tip" Type="int" Nullable="false" />
+          <Property Name="UretimYili" Type="int" Nullable="false" />
+          <Property Name="Km" Type="int" Nullable="false" />
+          <Property Name="MotorHacmi" Type="int" Nullable="false" />
+          <Property Name="MotorGucu" Type="int" Nullable="false" />
+          <Property Name="SilindirSayisi" Type="int" Nullable="false" />
+          <Property Name="Vites" Type="int" Nullable="false" />
+          <Property Name="Renk" Type="int" Nullable="false" />
+          <Property Name="Kimden" Type="int" Nullable="false" />
+          <Property Name="Takasli" Type="bit" Nullable="false" />
+          <Property Name="Durumu" Type="int" Nullable="false" />
+          <Property Name="ABSCBS" Type="bit" Nullable="false" />
+          <Property Name="Airbag" Type="bit" Nullable="false" />
+          <Property Name="Alarm" Type="bit" Nullable="false" />
+          <Property Name="Sirtlik" Type="bit" Nullable="false" />
+          <Property Name="YanKorumaCubuklari" Type="bit" Nullable="false" />
+          <Property Name="OnKorumaCubuklari" Type="bit" Nullable="false" />
+          <Property Name="DusmeTopuzlari" Type="bit" Nullable="false" />
+          <Property Name="ArkaBagaj" Type="bit" Nullable="false" />
+          <Property Name="GPS" Type="bit" Nullable="false" />
+          <Property Name="IsitmaliElcik" Type="bit" Nullable="false" />
+          <Property Name="Egzoz" Type="bit" Nullable="false" />
+          <Property Name="KoltukAltiBagaj" Type="bit" Nullable="false" />
+          <Property Name="LedSinyal" Type="bit" Nullable="false" />
+          <Property Name="LedStop" Type="bit" Nullable="false" />
+          <Property Name="MuzikSistemi" Type="bit" Nullable="false" />
+          <Property Name="XenonFar" Type="bit" Nullable="false" />
+          <Property Name="Canta" Type="bit" Nullable="false" />
+          <Property Name="CiftAyak" Type="bit" Nullable="false" />
+          <Property Name="IlanId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_MotorGucu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MotorGucu" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_MotorHacmi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="MotorHacmi" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Renk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Renk" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_SilindirSayisi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="SilindirSayisi" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Tipi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Tipi" Type="nvarchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="mot_Vites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Vites" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="postakodu">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="mahalleID" Type="int" />
+          <Property Name="kod" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="semt">
+          <Key>
+            <PropertyRef Name="semtID" />
+          </Key>
+          <Property Name="semtID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ilceID" Type="int" />
+          <Property Name="ad" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AltKategori_Kategori_KategoriId">
+          <End Role="Kategori" Type="Self.Kategori" Multiplicity="1" />
+          <End Role="AltKategori" Type="Self.AltKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="AltKategori">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ilce_il_ilID">
+          <End Role="il" Type="Self.il" Multiplicity="1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="il">
+              <PropertyRef Name="ilID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="ilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mahalle_semt_semtID">
+          <End Role="semt" Type="Self.semt" Multiplicity="1" />
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semt">
+              <PropertyRef Name="semtID" />
+            </Principal>
+            <Dependent Role="mahalle">
+              <PropertyRef Name="semtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Guvenlik_mot_Motor_Id">
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="1" />
+          <End Role="mot_Guvenlik" Type="Self.mot_Guvenlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Motor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Guvenlik">
+              <PropertyRef Name="mot_MoturId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Model_mot_Marka_Id">
+          <End Role="mot_Marka" Type="Self.mot_Marka" Multiplicity="1" />
+          <End Role="mot_Model" Type="Self.mot_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Marka">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Model">
+              <PropertyRef Name="MarkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Durumu_Id">
+          <End Role="mot_Durumu" Type="Self.mot_Durumu" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Durumu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Durumu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Kimden_Id">
+          <End Role="mot_Kimden" Type="Self.mot_Kimden" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Kimden">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Kimden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Model_Id">
+          <End Role="mot_Model" Type="Self.mot_Model" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Model">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_MotorGucu_Id">
+          <End Role="mot_MotorGucu" Type="Self.mot_MotorGucu" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_MotorGucu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="MotorGucu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_MotorHacmi_Id">
+          <End Role="mot_MotorHacmi" Type="Self.mot_MotorHacmi" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_MotorHacmi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="MotorHacmi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Renk_Id">
+          <End Role="mot_Renk" Type="Self.mot_Renk" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Renk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Renk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_SilindirSayisi_Id">
+          <End Role="mot_SilindirSayisi" Type="Self.mot_SilindirSayisi" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_SilindirSayisi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="SilindirSayisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Tipi_Id">
+          <End Role="mot_Tipi" Type="Self.mot_Tipi" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Tipi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Vites_Id">
+          <End Role="mot_Vites" Type="Self.mot_Vites" Multiplicity="1" />
+          <End Role="mot_Motor" Type="Self.mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Vites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Vites" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_postakodu_mahalle_mahalleID">
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="0..1" />
+          <End Role="postakodu" Type="Self.postakodu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mahalle">
+              <PropertyRef Name="mahalleID" />
+            </Principal>
+            <Dependent Role="postakodu">
+              <PropertyRef Name="mahalleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_semt_ilce_ilceID">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="semt" Type="Self.semt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilceID" />
+            </Principal>
+            <Dependent Role="semt">
+              <PropertyRef Name="ilceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="sp_PKIlBaglantisi" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PKId" Type="varchar" Mode="In" />
+        </Function>
+        <EntityContainer Name="motobulvarModelStoreContainer">
+          <EntitySet Name="AltKategori" EntityType="Self.AltKategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FavorilereAlinanIlanlar" EntityType="Self.FavorilereAlinanIlanlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ilan" EntityType="Self.Ilan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="il" EntityType="Self.il" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kategori" EntityType="Self.Kategori" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mahalle" EntityType="Self.mahalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Durumu" EntityType="Self.mot_Durumu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Guvenlik" EntityType="Self.mot_Guvenlik" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Kimden" EntityType="Self.mot_Kimden" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Marka" EntityType="Self.mot_Marka" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Model" EntityType="Self.mot_Model" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Motor" EntityType="Self.mot_Motor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_MotorGucu" EntityType="Self.mot_MotorGucu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_MotorHacmi" EntityType="Self.mot_MotorHacmi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Renk" EntityType="Self.mot_Renk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_SilindirSayisi" EntityType="Self.mot_SilindirSayisi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Tipi" EntityType="Self.mot_Tipi" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="mot_Vites" EntityType="Self.mot_Vites" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="postakodu" EntityType="Self.postakodu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="semt" EntityType="Self.semt" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AltKategori_Kategori_KategoriId" Association="Self.FK_AltKategori_Kategori_KategoriId">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="AltKategori" EntitySet="AltKategori" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ilce_il_ilID" Association="Self.FK_ilce_il_ilID">
+            <End Role="il" EntitySet="il" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_semt_semtID" Association="Self.FK_mahalle_semt_semtID">
+            <End Role="semt" EntitySet="semt" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Guvenlik_mot_Motor_Id" Association="Self.FK_mot_Guvenlik_mot_Motor_Id">
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+            <End Role="mot_Guvenlik" EntitySet="mot_Guvenlik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Model_mot_Marka_Id" Association="Self.FK_mot_Model_mot_Marka_Id">
+            <End Role="mot_Marka" EntitySet="mot_Marka" />
+            <End Role="mot_Model" EntitySet="mot_Model" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Durumu_Id" Association="Self.FK_mot_Motor_mot_Durumu_Id">
+            <End Role="mot_Durumu" EntitySet="mot_Durumu" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Kimden_Id" Association="Self.FK_mot_Motor_mot_Kimden_Id">
+            <End Role="mot_Kimden" EntitySet="mot_Kimden" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Model_Id" Association="Self.FK_mot_Motor_mot_Model_Id">
+            <End Role="mot_Model" EntitySet="mot_Model" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_MotorGucu_Id" Association="Self.FK_mot_Motor_mot_MotorGucu_Id">
+            <End Role="mot_MotorGucu" EntitySet="mot_MotorGucu" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_MotorHacmi_Id" Association="Self.FK_mot_Motor_mot_MotorHacmi_Id">
+            <End Role="mot_MotorHacmi" EntitySet="mot_MotorHacmi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Renk_Id" Association="Self.FK_mot_Motor_mot_Renk_Id">
+            <End Role="mot_Renk" EntitySet="mot_Renk" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_SilindirSayisi_Id" Association="Self.FK_mot_Motor_mot_SilindirSayisi_Id">
+            <End Role="mot_SilindirSayisi" EntitySet="mot_SilindirSayisi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Tipi_Id" Association="Self.FK_mot_Motor_mot_Tipi_Id">
+            <End Role="mot_Tipi" EntitySet="mot_Tipi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Vites_Id" Association="Self.FK_mot_Motor_mot_Vites_Id">
+            <End Role="mot_Vites" EntitySet="mot_Vites" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_postakodu_mahalle_mahalleID" Association="Self.FK_postakodu_mahalle_mahalleID">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="postakodu" EntitySet="postakodu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_semt_ilce_ilceID" Association="Self.FK_semt_ilce_ilceID">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="semt" EntitySet="semt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="motobulvarModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="il">
+          <Key>
+            <PropertyRef Name="ilID" />
+          </Key>
+          <Property Name="ilID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ad" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_ilce_il_ilID" FromRole="il" ToRole="ilce" />
+        </EntityType>
+        <EntityType Name="ilce">
+          <Key>
+            <PropertyRef Name="ilceID" />
+          </Key>
+          <Property Name="ilceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="il" Relationship="Self.FK_ilce_il_ilID" FromRole="ilce" ToRole="il" />
+          <NavigationProperty Name="semt" Relationship="Self.FK_semt_ilce_ilceID" FromRole="ilce" ToRole="semt" />
+        </EntityType>
+        <EntityType Name="mahalle">
+          <Key>
+            <PropertyRef Name="mahalleID" />
+          </Key>
+          <Property Name="mahalleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="semtID" Type="Int32" Nullable="false" />
+          <Property Name="ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="semt" Relationship="Self.FK_mahalle_semt_semtID" FromRole="mahalle" ToRole="semt" />
+          <NavigationProperty Name="postakodu" Relationship="motobulvarModel.FK_postakodu_mahalle_mahalleID" FromRole="mahalle" ToRole="postakodu" />
+        </EntityType>
+        <EntityType Name="semt">
+          <Key>
+            <PropertyRef Name="semtID" />
+          </Key>
+          <Property Name="semtID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ilceID" Type="Int32" />
+          <Property Name="ad" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="ilce" Relationship="Self.FK_semt_ilce_ilceID" FromRole="semt" ToRole="ilce" />
+          <NavigationProperty Name="mahalle" Relationship="Self.FK_mahalle_semt_semtID" FromRole="semt" ToRole="mahalle" />
+        </EntityType>
+        <Association Name="FK_ilce_il_ilID">
+          <End Role="il" Type="Self.il" Multiplicity="1" />
+          <End Role="ilce" Type="Self.ilce" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="il">
+              <PropertyRef Name="ilID" />
+            </Principal>
+            <Dependent Role="ilce">
+              <PropertyRef Name="ilID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_semt_ilce_ilceID">
+          <End Role="ilce" Type="Self.ilce" Multiplicity="0..1" />
+          <End Role="semt" Type="Self.semt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ilce">
+              <PropertyRef Name="ilceID" />
+            </Principal>
+            <Dependent Role="semt">
+              <PropertyRef Name="ilceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mahalle_semt_semtID">
+          <End Role="semt" Type="Self.semt" Multiplicity="1" />
+          <End Role="mahalle" Type="Self.mahalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="semt">
+              <PropertyRef Name="semtID" />
+            </Principal>
+            <Dependent Role="mahalle">
+              <PropertyRef Name="semtID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="motobulvarEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="il" EntityType="Self.il" />
+          <EntitySet Name="ilce" EntityType="Self.ilce" />
+          <EntitySet Name="mahalle" EntityType="Self.mahalle" />
+          <EntitySet Name="semt" EntityType="Self.semt" />
+          <AssociationSet Name="FK_ilce_il_ilID" Association="Self.FK_ilce_il_ilID">
+            <End Role="il" EntitySet="il" />
+            <End Role="ilce" EntitySet="ilce" />
+          </AssociationSet>
+          <AssociationSet Name="FK_semt_ilce_ilceID" Association="Self.FK_semt_ilce_ilceID">
+            <End Role="ilce" EntitySet="ilce" />
+            <End Role="semt" EntitySet="semt" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mahalle_semt_semtID" Association="Self.FK_mahalle_semt_semtID">
+            <End Role="semt" EntitySet="semt" />
+            <End Role="mahalle" EntitySet="mahalle" />
+          </AssociationSet>
+          <EntitySet Name="mot_Durumu" EntityType="motobulvarModel.mot_Durumu" />
+          <EntitySet Name="mot_Guvenlik" EntityType="motobulvarModel.mot_Guvenlik" />
+          <EntitySet Name="mot_Kimden" EntityType="motobulvarModel.mot_Kimden" />
+          <EntitySet Name="mot_Marka" EntityType="motobulvarModel.mot_Marka" />
+          <EntitySet Name="mot_Model" EntityType="motobulvarModel.mot_Model" />
+          <EntitySet Name="mot_MotorGucu" EntityType="motobulvarModel.mot_MotorGucu" />
+          <EntitySet Name="mot_MotorHacmi" EntityType="motobulvarModel.mot_MotorHacmi" />
+          <EntitySet Name="mot_Renk" EntityType="motobulvarModel.mot_Renk" />
+          <EntitySet Name="mot_SilindirSayisi" EntityType="motobulvarModel.mot_SilindirSayisi" />
+          <EntitySet Name="mot_Tipi" EntityType="motobulvarModel.mot_Tipi" />
+          <EntitySet Name="mot_Vites" EntityType="motobulvarModel.mot_Vites" />
+          <AssociationSet Name="FK_mot_Model_mot_Marka_Id" Association="motobulvarModel.FK_mot_Model_mot_Marka_Id">
+            <End Role="mot_Marka" EntitySet="mot_Marka" />
+            <End Role="mot_Model" EntitySet="mot_Model" />
+          </AssociationSet>
+          <EntitySet Name="postakodu" EntityType="motobulvarModel.postakodu" />
+          <AssociationSet Name="FK_postakodu_mahalle_mahalleID" Association="motobulvarModel.FK_postakodu_mahalle_mahalleID">
+            <End Role="mahalle" EntitySet="mahalle" />
+            <End Role="postakodu" EntitySet="postakodu" />
+          </AssociationSet>
+          <FunctionImport Name="sp_PKIlBaglantisi" ReturnType="Collection(motobulvarModel.sp_PKIlBaglantisi_Result)">
+          <Parameter Name="PKId" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="AltKategori" EntityType="motobulvarModel.AltKategori" />
+          <EntitySet Name="Kategori" EntityType="motobulvarModel.Kategori" />
+          <AssociationSet Name="FK_AltKategori_Kategori_KategoriId" Association="motobulvarModel.FK_AltKategori_Kategori_KategoriId">
+            <End Role="Kategori" EntitySet="Kategori" />
+            <End Role="AltKategori" EntitySet="AltKategori" />
+          </AssociationSet>
+          <EntitySet Name="mot_Motor" EntityType="motobulvarModel.mot_Motor" />
+          <AssociationSet Name="FK_mot_Motor_mot_Durumu_Id" Association="motobulvarModel.FK_mot_Motor_mot_Durumu_Id">
+            <End Role="mot_Durumu" EntitySet="mot_Durumu" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Guvenlik_mot_Motor_Id" Association="motobulvarModel.FK_mot_Guvenlik_mot_Motor_Id">
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+            <End Role="mot_Guvenlik" EntitySet="mot_Guvenlik" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Kimden_Id" Association="motobulvarModel.FK_mot_Motor_mot_Kimden_Id">
+            <End Role="mot_Kimden" EntitySet="mot_Kimden" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Model_Id" Association="motobulvarModel.FK_mot_Motor_mot_Model_Id">
+            <End Role="mot_Model" EntitySet="mot_Model" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_MotorGucu_Id" Association="motobulvarModel.FK_mot_Motor_mot_MotorGucu_Id">
+            <End Role="mot_MotorGucu" EntitySet="mot_MotorGucu" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_MotorHacmi_Id" Association="motobulvarModel.FK_mot_Motor_mot_MotorHacmi_Id">
+            <End Role="mot_MotorHacmi" EntitySet="mot_MotorHacmi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Renk_Id" Association="motobulvarModel.FK_mot_Motor_mot_Renk_Id">
+            <End Role="mot_Renk" EntitySet="mot_Renk" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_SilindirSayisi_Id" Association="motobulvarModel.FK_mot_Motor_mot_SilindirSayisi_Id">
+            <End Role="mot_SilindirSayisi" EntitySet="mot_SilindirSayisi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Tipi_Id" Association="motobulvarModel.FK_mot_Motor_mot_Tipi_Id">
+            <End Role="mot_Tipi" EntitySet="mot_Tipi" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <AssociationSet Name="FK_mot_Motor_mot_Vites_Id" Association="motobulvarModel.FK_mot_Motor_mot_Vites_Id">
+            <End Role="mot_Vites" EntitySet="mot_Vites" />
+            <End Role="mot_Motor" EntitySet="mot_Motor" />
+          </AssociationSet>
+          <EntitySet Name="FavorilereAlinanIlanlar" EntityType="motobulvarModel.FavorilereAlinanIlanlar" />
+          <EntitySet Name="Ilan" EntityType="motobulvarModel.Ilan" />
+          </EntityContainer>
+        <EntityType Name="mot_Durumu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Durumu" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Durumu_Id" FromRole="mot_Durumu" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Guvenlik">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mot_MoturId" Type="Int32" Nullable="false" />
+          <Property Name="ABSCBS" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag" Type="Boolean" Nullable="false" />
+          <Property Name="Alarm" Type="Boolean" Nullable="false" />
+          <Property Name="Sirtlik" Type="Boolean" Nullable="false" />
+          <Property Name="YanKorumaCubuklari" Type="Boolean" Nullable="false" />
+          <Property Name="OnKorumaCubukları" Type="Boolean" Nullable="false" />
+          <Property Name="DusmeTopuzlari" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Guvenlik_mot_Motor_Id" FromRole="mot_Guvenlik" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Kimden">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Kimden" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Kimden_Id" FromRole="mot_Kimden" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Marka">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Marka" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Model" Relationship="motobulvarModel.FK_mot_Model_mot_Marka_Id" FromRole="mot_Marka" ToRole="mot_Model" />
+        </EntityType>
+        <EntityType Name="mot_Model">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MarkaId" Type="Int32" Nullable="false" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Marka" Relationship="motobulvarModel.FK_mot_Model_mot_Marka_Id" FromRole="mot_Model" ToRole="mot_Marka" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Model_Id" FromRole="mot_Model" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_MotorGucu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MotorGucu" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_MotorGucu_Id" FromRole="mot_MotorGucu" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_MotorHacmi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="MotorHacmi" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_MotorHacmi_Id" FromRole="mot_MotorHacmi" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Renk">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Renk" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Renk_Id" FromRole="mot_Renk" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_SilindirSayisi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="SilindirSayisi" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_SilindirSayisi_Id" FromRole="mot_SilindirSayisi" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Tipi">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Tipi" Type="String" Nullable="false" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Tipi_Id" FromRole="mot_Tipi" ToRole="mot_Motor" />
+        </EntityType>
+        <EntityType Name="mot_Vites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Vites" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="mot_Motor" Relationship="motobulvarModel.FK_mot_Motor_mot_Vites_Id" FromRole="mot_Vites" ToRole="mot_Motor" />
+        </EntityType>
+        <Association Name="FK_mot_Model_mot_Marka_Id">
+          <End Type="motobulvarModel.mot_Marka" Role="mot_Marka" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Model" Role="mot_Model" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Marka">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Model">
+              <PropertyRef Name="MarkaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="postakodu">
+          <Key>
+            <PropertyRef Name="pkID" />
+          </Key>
+          <Property Name="pkID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="mahalleID" Type="Int32" />
+          <Property Name="kod" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mahalle" Relationship="motobulvarModel.FK_postakodu_mahalle_mahalleID" FromRole="postakodu" ToRole="mahalle" />
+        </EntityType>
+        <Association Name="FK_postakodu_mahalle_mahalleID">
+          <End Type="motobulvarModel.mahalle" Role="mahalle" Multiplicity="0..1" />
+          <End Type="motobulvarModel.postakodu" Role="postakodu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mahalle">
+              <PropertyRef Name="mahalleID" />
+            </Principal>
+            <Dependent Role="postakodu">
+              <PropertyRef Name="mahalleID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="sp_PKIlBaglantisi_Result">
+          <Property Type="Int32" Name="pkID" Nullable="false" />
+          <Property Type="Int32" Name="PostaKoduAdi" Nullable="false" />
+          <Property Type="Int32" Name="mahalleID" Nullable="false" />
+          <Property Type="String" Name="MahalleAdi" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="semtID" Nullable="false" />
+          <Property Type="String" Name="SemtAdi" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="ilceID" Nullable="false" />
+          <Property Type="String" Name="IlceAdi" Nullable="false" MaxLength="255" />
+          <Property Type="Int32" Name="ilID" Nullable="false" />
+          <Property Type="String" Name="IlAdi" Nullable="false" MaxLength="70" />
+        </ComplexType>
+        <EntityType Name="AltKategori">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriId" Type="Int32" Nullable="false" />
+          <Property Name="AltKategoriAdi" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Kategori" Relationship="motobulvarModel.FK_AltKategori_Kategori_KategoriId" FromRole="AltKategori" ToRole="Kategori" />
+        </EntityType>
+        <EntityType Name="Kategori">
+          <Key>
+            <PropertyRef Name="KategoriId" />
+          </Key>
+          <Property Name="KategoriId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KategoriAdi" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AltKategori" Relationship="motobulvarModel.FK_AltKategori_Kategori_KategoriId" FromRole="Kategori" ToRole="AltKategori" />
+        </EntityType>
+        <Association Name="FK_AltKategori_Kategori_KategoriId">
+          <End Type="motobulvarModel.Kategori" Role="Kategori" Multiplicity="1" />
+          <End Type="motobulvarModel.AltKategori" Role="AltKategori" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kategori">
+              <PropertyRef Name="KategoriId" />
+            </Principal>
+            <Dependent Role="AltKategori">
+              <PropertyRef Name="KategoriId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="mot_Motor">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Model" Type="Int32" Nullable="false" />
+          <Property Name="Bedel" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Tip" Type="Int32" Nullable="false" />
+          <Property Name="UretimYili" Type="Int32" Nullable="false" />
+          <Property Name="Km" Type="Int32" Nullable="false" />
+          <Property Name="MotorHacmi" Type="Int32" Nullable="false" />
+          <Property Name="MotorGucu" Type="Int32" Nullable="false" />
+          <Property Name="SilindirSayisi" Type="Int32" Nullable="false" />
+          <Property Name="Vites" Type="Int32" Nullable="false" />
+          <Property Name="Renk" Type="Int32" Nullable="false" />
+          <Property Name="Kimden" Type="Int32" Nullable="false" />
+          <Property Name="Takasli" Type="Boolean" Nullable="false" />
+          <Property Name="Durumu" Type="Int32" Nullable="false" />
+          <Property Name="ABSCBS" Type="Boolean" Nullable="false" />
+          <Property Name="Airbag" Type="Boolean" Nullable="false" />
+          <Property Name="Alarm" Type="Boolean" Nullable="false" />
+          <Property Name="Sirtlik" Type="Boolean" Nullable="false" />
+          <Property Name="YanKorumaCubuklari" Type="Boolean" Nullable="false" />
+          <Property Name="OnKorumaCubuklari" Type="Boolean" Nullable="false" />
+          <Property Name="DusmeTopuzlari" Type="Boolean" Nullable="false" />
+          <Property Name="ArkaBagaj" Type="Boolean" Nullable="false" />
+          <Property Name="GPS" Type="Boolean" Nullable="false" />
+          <Property Name="IsitmaliElcik" Type="Boolean" Nullable="false" />
+          <Property Name="Egzoz" Type="Boolean" Nullable="false" />
+          <Property Name="KoltukAltiBagaj" Type="Boolean" Nullable="false" />
+          <Property Name="LedSinyal" Type="Boolean" Nullable="false" />
+          <Property Name="LedStop" Type="Boolean" Nullable="false" />
+          <Property Name="MuzikSistemi" Type="Boolean" Nullable="false" />
+          <Property Name="XenonFar" Type="Boolean" Nullable="false" />
+          <Property Name="Canta" Type="Boolean" Nullable="false" />
+          <Property Name="CiftAyak" Type="Boolean" Nullable="false" />
+          <Property Name="IlanId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="mot_Durumu" Relationship="motobulvarModel.FK_mot_Motor_mot_Durumu_Id" FromRole="mot_Motor" ToRole="mot_Durumu" />
+          <NavigationProperty Name="mot_Guvenlik" Relationship="motobulvarModel.FK_mot_Guvenlik_mot_Motor_Id" FromRole="mot_Motor" ToRole="mot_Guvenlik" />
+          <NavigationProperty Name="mot_Kimden" Relationship="motobulvarModel.FK_mot_Motor_mot_Kimden_Id" FromRole="mot_Motor" ToRole="mot_Kimden" />
+          <NavigationProperty Name="mot_Model" Relationship="motobulvarModel.FK_mot_Motor_mot_Model_Id" FromRole="mot_Motor" ToRole="mot_Model" />
+          <NavigationProperty Name="mot_MotorGucu" Relationship="motobulvarModel.FK_mot_Motor_mot_MotorGucu_Id" FromRole="mot_Motor" ToRole="mot_MotorGucu" />
+          <NavigationProperty Name="mot_MotorHacmi" Relationship="motobulvarModel.FK_mot_Motor_mot_MotorHacmi_Id" FromRole="mot_Motor" ToRole="mot_MotorHacmi" />
+          <NavigationProperty Name="mot_Renk" Relationship="motobulvarModel.FK_mot_Motor_mot_Renk_Id" FromRole="mot_Motor" ToRole="mot_Renk" />
+          <NavigationProperty Name="mot_SilindirSayisi" Relationship="motobulvarModel.FK_mot_Motor_mot_SilindirSayisi_Id" FromRole="mot_Motor" ToRole="mot_SilindirSayisi" />
+          <NavigationProperty Name="mot_Tipi" Relationship="motobulvarModel.FK_mot_Motor_mot_Tipi_Id" FromRole="mot_Motor" ToRole="mot_Tipi" />
+          <NavigationProperty Name="mot_Vites" Relationship="motobulvarModel.FK_mot_Motor_mot_Vites_Id" FromRole="mot_Motor" ToRole="mot_Vites" />
+        </EntityType>
+        <Association Name="FK_mot_Motor_mot_Durumu_Id">
+          <End Type="motobulvarModel.mot_Durumu" Role="mot_Durumu" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Durumu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Durumu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Guvenlik_mot_Motor_Id">
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Guvenlik" Role="mot_Guvenlik" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Motor">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Guvenlik">
+              <PropertyRef Name="mot_MoturId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Kimden_Id">
+          <End Type="motobulvarModel.mot_Kimden" Role="mot_Kimden" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Kimden">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Kimden" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Model_Id">
+          <End Type="motobulvarModel.mot_Model" Role="mot_Model" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Model">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Model" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_MotorGucu_Id">
+          <End Type="motobulvarModel.mot_MotorGucu" Role="mot_MotorGucu" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_MotorGucu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="MotorGucu" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_MotorHacmi_Id">
+          <End Type="motobulvarModel.mot_MotorHacmi" Role="mot_MotorHacmi" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_MotorHacmi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="MotorHacmi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Renk_Id">
+          <End Type="motobulvarModel.mot_Renk" Role="mot_Renk" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Renk">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Renk" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_SilindirSayisi_Id">
+          <End Type="motobulvarModel.mot_SilindirSayisi" Role="mot_SilindirSayisi" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_SilindirSayisi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="SilindirSayisi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Tipi_Id">
+          <End Type="motobulvarModel.mot_Tipi" Role="mot_Tipi" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Tipi">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Tip" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_mot_Motor_mot_Vites_Id">
+          <End Type="motobulvarModel.mot_Vites" Role="mot_Vites" Multiplicity="1" />
+          <End Type="motobulvarModel.mot_Motor" Role="mot_Motor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="mot_Vites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="mot_Motor">
+              <PropertyRef Name="Vites" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="FavorilereAlinanIlanlar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserUN" Type="Guid" Nullable="false" />
+          <Property Name="IlanId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ilan">
+          <Key>
+            <PropertyRef Name="IlanId" />
+          </Key>
+          <Property Name="IlanId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IlanBasligi" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FullDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnasayfadaGoster" Type="Boolean" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Deleted" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedOn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IlanSahibi" Type="Guid" Nullable="false" />
+          <Property Name="Fiyati" Type="Decimal" Nullable="false" Precision="18" Scale="2" />
+          <Property Name="Lat" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Lon" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="IlanResimleri" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Video" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="PostaKodu" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="IlanTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GoruntulenmeSayisi" Type="Int32" Nullable="false" />
+          <Property Name="AltKategoriId" Type="Int32" Nullable="false" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="motobulvarModelStoreContainer" CdmEntityContainer="motobulvarEntities">
+          <EntitySetMapping Name="il">
+            <EntityTypeMapping TypeName="motobulvarModel.il">
+              <MappingFragment StoreEntitySet="il">
+                <ScalarProperty Name="ilID" ColumnName="ilID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ilce">
+            <EntityTypeMapping TypeName="motobulvarModel.ilce">
+              <MappingFragment StoreEntitySet="ilce">
+                <ScalarProperty Name="ilceID" ColumnName="ilceID" />
+                <ScalarProperty Name="ilID" ColumnName="ilID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mahalle">
+            <EntityTypeMapping TypeName="motobulvarModel.mahalle">
+              <MappingFragment StoreEntitySet="mahalle">
+                <ScalarProperty Name="mahalleID" ColumnName="mahalleID" />
+                <ScalarProperty Name="semtID" ColumnName="semtID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="semt">
+            <EntityTypeMapping TypeName="motobulvarModel.semt">
+              <MappingFragment StoreEntitySet="semt">
+                <ScalarProperty Name="semtID" ColumnName="semtID" />
+                <ScalarProperty Name="ilceID" ColumnName="ilceID" />
+                <ScalarProperty Name="ad" ColumnName="ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Durumu">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Durumu">
+              <MappingFragment StoreEntitySet="mot_Durumu">
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Guvenlik">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Guvenlik">
+              <MappingFragment StoreEntitySet="mot_Guvenlik">
+                <ScalarProperty Name="DusmeTopuzlari" ColumnName="DusmeTopuzlari" />
+                <ScalarProperty Name="OnKorumaCubukları" ColumnName="OnKorumaCubukları" />
+                <ScalarProperty Name="YanKorumaCubuklari" ColumnName="YanKorumaCubuklari" />
+                <ScalarProperty Name="Sirtlik" ColumnName="Sirtlik" />
+                <ScalarProperty Name="Alarm" ColumnName="Alarm" />
+                <ScalarProperty Name="Airbag" ColumnName="Airbag" />
+                <ScalarProperty Name="ABSCBS" ColumnName="ABSCBS" />
+                <ScalarProperty Name="mot_MoturId" ColumnName="mot_MoturId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Kimden">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Kimden">
+              <MappingFragment StoreEntitySet="mot_Kimden">
+                <ScalarProperty Name="Kimden" ColumnName="Kimden" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Marka">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Marka">
+              <MappingFragment StoreEntitySet="mot_Marka">
+                <ScalarProperty Name="Marka" ColumnName="Marka" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Model">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Model">
+              <MappingFragment StoreEntitySet="mot_Model">
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="MarkaId" ColumnName="MarkaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_MotorGucu">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_MotorGucu">
+              <MappingFragment StoreEntitySet="mot_MotorGucu">
+                <ScalarProperty Name="MotorGucu" ColumnName="MotorGucu" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_MotorHacmi">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_MotorHacmi">
+              <MappingFragment StoreEntitySet="mot_MotorHacmi">
+                <ScalarProperty Name="MotorHacmi" ColumnName="MotorHacmi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Renk">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Renk">
+              <MappingFragment StoreEntitySet="mot_Renk">
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_SilindirSayisi">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_SilindirSayisi">
+              <MappingFragment StoreEntitySet="mot_SilindirSayisi">
+                <ScalarProperty Name="SilindirSayisi" ColumnName="SilindirSayisi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Tipi">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Tipi">
+              <MappingFragment StoreEntitySet="mot_Tipi">
+                <ScalarProperty Name="Tipi" ColumnName="Tipi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Vites">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Vites">
+              <MappingFragment StoreEntitySet="mot_Vites">
+                <ScalarProperty Name="Vites" ColumnName="Vites" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="postakodu">
+            <EntityTypeMapping TypeName="motobulvarModel.postakodu">
+              <MappingFragment StoreEntitySet="postakodu">
+                <ScalarProperty Name="kod" ColumnName="kod" />
+                <ScalarProperty Name="mahalleID" ColumnName="mahalleID" />
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_PKIlBaglantisi" FunctionName="motobulvarModel.Store.sp_PKIlBaglantisi">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="motobulvarModel.sp_PKIlBaglantisi_Result">
+                <ScalarProperty Name="pkID" ColumnName="pkID" />
+                <ScalarProperty Name="PostaKoduAdi" ColumnName="PostaKoduAdi" />
+                <ScalarProperty Name="mahalleID" ColumnName="mahalleID" />
+                <ScalarProperty Name="MahalleAdi" ColumnName="MahalleAdi" />
+                <ScalarProperty Name="semtID" ColumnName="semtID" />
+                <ScalarProperty Name="SemtAdi" ColumnName="SemtAdi" />
+                <ScalarProperty Name="ilceID" ColumnName="ilceID" />
+                <ScalarProperty Name="IlceAdi" ColumnName="IlceAdi" />
+                <ScalarProperty Name="ilID" ColumnName="ilID" />
+                <ScalarProperty Name="IlAdi" ColumnName="IlAdi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="AltKategori">
+            <EntityTypeMapping TypeName="motobulvarModel.AltKategori">
+              <MappingFragment StoreEntitySet="AltKategori">
+                <ScalarProperty Name="AltKategoriAdi" ColumnName="AltKategoriAdi" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kategori">
+            <EntityTypeMapping TypeName="motobulvarModel.Kategori">
+              <MappingFragment StoreEntitySet="Kategori">
+                <ScalarProperty Name="KategoriAdi" ColumnName="KategoriAdi" />
+                <ScalarProperty Name="KategoriId" ColumnName="KategoriId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="mot_Motor">
+            <EntityTypeMapping TypeName="motobulvarModel.mot_Motor">
+              <MappingFragment StoreEntitySet="mot_Motor">
+                <ScalarProperty Name="IlanId" ColumnName="IlanId" />
+                <ScalarProperty Name="CiftAyak" ColumnName="CiftAyak" />
+                <ScalarProperty Name="Canta" ColumnName="Canta" />
+                <ScalarProperty Name="XenonFar" ColumnName="XenonFar" />
+                <ScalarProperty Name="MuzikSistemi" ColumnName="MuzikSistemi" />
+                <ScalarProperty Name="LedStop" ColumnName="LedStop" />
+                <ScalarProperty Name="LedSinyal" ColumnName="LedSinyal" />
+                <ScalarProperty Name="KoltukAltiBagaj" ColumnName="KoltukAltiBagaj" />
+                <ScalarProperty Name="Egzoz" ColumnName="Egzoz" />
+                <ScalarProperty Name="IsitmaliElcik" ColumnName="IsitmaliElcik" />
+                <ScalarProperty Name="GPS" ColumnName="GPS" />
+                <ScalarProperty Name="ArkaBagaj" ColumnName="ArkaBagaj" />
+                <ScalarProperty Name="DusmeTopuzlari" ColumnName="DusmeTopuzlari" />
+                <ScalarProperty Name="OnKorumaCubuklari" ColumnName="OnKorumaCubuklari" />
+                <ScalarProperty Name="YanKorumaCubuklari" ColumnName="YanKorumaCubuklari" />
+                <ScalarProperty Name="Sirtlik" ColumnName="Sirtlik" />
+                <ScalarProperty Name="Alarm" ColumnName="Alarm" />
+                <ScalarProperty Name="Airbag" ColumnName="Airbag" />
+                <ScalarProperty Name="ABSCBS" ColumnName="ABSCBS" />
+                <ScalarProperty Name="Durumu" ColumnName="Durumu" />
+                <ScalarProperty Name="Takasli" ColumnName="Takasli" />
+                <ScalarProperty Name="Kimden" ColumnName="Kimden" />
+                <ScalarProperty Name="Renk" ColumnName="Renk" />
+                <ScalarProperty Name="Vites" ColumnName="Vites" />
+                <ScalarProperty Name="SilindirSayisi" ColumnName="SilindirSayisi" />
+                <ScalarProperty Name="MotorGucu" ColumnName="MotorGucu" />
+                <ScalarProperty Name="MotorHacmi" ColumnName="MotorHacmi" />
+                <ScalarProperty Name="Km" ColumnName="Km" />
+                <ScalarProperty Name="UretimYili" ColumnName="UretimYili" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Bedel" ColumnName="Bedel" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FavorilereAlinanIlanlar">
+            <EntityTypeMapping TypeName="motobulvarModel.FavorilereAlinanIlanlar">
+              <MappingFragment StoreEntitySet="FavorilereAlinanIlanlar">
+                <ScalarProperty Name="IlanId" ColumnName="IlanId" />
+                <ScalarProperty Name="UserUN" ColumnName="UserUN" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ilan">
+            <EntityTypeMapping TypeName="motobulvarModel.Ilan">
+              <MappingFragment StoreEntitySet="Ilan">
+                <ScalarProperty Name="AltKategoriId" ColumnName="AltKategoriId" />
+                <ScalarProperty Name="GoruntulenmeSayisi" ColumnName="GoruntulenmeSayisi" />
+                <ScalarProperty Name="IlanTarihi" ColumnName="IlanTarihi" />
+                <ScalarProperty Name="PostaKodu" ColumnName="PostaKodu" />
+                <ScalarProperty Name="Video" ColumnName="Video" />
+                <ScalarProperty Name="IlanResimleri" ColumnName="IlanResimleri" />
+                <ScalarProperty Name="Lon" ColumnName="Lon" />
+                <ScalarProperty Name="Lat" ColumnName="Lat" />
+                <ScalarProperty Name="Fiyati" ColumnName="Fiyati" />
+                <ScalarProperty Name="IlanSahibi" ColumnName="IlanSahibi" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="Deleted" ColumnName="Deleted" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="AnasayfadaGoster" ColumnName="AnasayfadaGoster" />
+                <ScalarProperty Name="FullDescription" ColumnName="FullDescription" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="IlanBasligi" ColumnName="IlanBasligi" />
+                <ScalarProperty Name="IlanId" ColumnName="IlanId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

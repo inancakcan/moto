@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "motoE";
+}
+
+<h2>motoE</h2>
+
+
+
+
+
+
+@(Html.Kendo().TabStrip()
+          .Name("motoTabStrip")
+        //.SelectedIndex(0)
+                  .Animation(animation => animation.Open(open => open.Fade(FadeDirection.In)))
+        //.Events(events => events
+        //    .ContentLoad("onContentLoad")
+        //    .Error("onError")
+        //)
+                    .Items(items => items.Add().Text("İlan Bilgisi").LoadContentFrom("Edit", "Ilan", new { id = ViewBag.IlanId }))
+                    .Items(items => items.Add().Text("İlan Ayrıntıları").LoadContentFrom("Edit", "Motosiklet", new { id = ViewBag.MotosikletId }))
+
+                    .SelectedIndex(ViewBag.index)
+
+)
